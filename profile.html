@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+      content="Driver Profile - TCL TruckersMP Cash League">
+
+<title>Driver Profile | TCL TruckersMP Cash League</title>
+
+<link rel="icon"
+      href="../images/logo.png">
+
+<link rel="stylesheet"
+      href="../css/home.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header class="site-header">
+
+<nav class="navbar">
+
+<a href="../index.html" class="logo">
+
+🚛
+<span>TCL</span>
+
+TruckersMP Cash League
+
+</a>
+
+<button
+id="menuToggle"
+class="menu-toggle">
+
+☰
+
+</button>
+
+<ul
+id="navMenu"
+class="nav-menu">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="register.html">Register</a></li>
+
+<li><a href="leaderboard.html">Leaderboard</a></li>
+
+<li><a href="seasons.html">Seasons</a></li>
+
+<li><a href="rules.html">Rules</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+<li>
+
+<a href="admin-login.html"
+class="admin-link">
+
+Admin
+
+</a>
+
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- ==========================================
+     HERO
+========================================== -->
+
+<section class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="container">
+
+<div class="hero-content">
+
+<img
+id="profileImage"
+class="profile-avatar"
+src="../images/default-profile.png"
+alt="Driver">
+
+<h1 id="driverName">
+
+Loading Driver...
+
+</h1>
+
+<p
+id="driverCompany">
+
+Independent Driver
+
+</p>
+
+<h3
+id="driverStatusHero"
+class="status-open">
+
+Loading...
+
+</h3>
+
+<p
+id="driverTitle">
+
+Rookie Driver
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     MAIN STATISTICS
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="stats-grid">
+
+<div class="card">
+
+<h3>🏆 Rank</h3>
+
+<h1 id="rank">
+
+-
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h3>⭐ Points</h3>
+
+<h1 id="points">
+
+0
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h3>🚚 Deliveries</h3>
+
+<h1 id="deliveries">
+
+0
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h3>🛣 Distance</h3>
+
+<h1 id="distance">
+
+0 KM
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h3>🎖 Level</h3>
+
+<h1 id="level">
+
+1
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h3>📈 Performance</h3>
+
+<h1 id="performanceRating">
+
+0%
+
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     LEVEL PROGRESS
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="hero-card">
+
+<h2>
+
+⭐ Driver Level Progress
+
+</h2>
+
+<progress
+
+id="levelProgress"
+
+value="0"
+
+max="100"
+
+style="width:100%;height:28px;">
+
+</progress>
+
+<br><br>
+
+<p id="levelProgressText">
+
+0% to next level
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================
+     DRIVER INFORMATION
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+👤 Driver Information
+
+</h2>
+
+<div class="stats-grid">
+
+<div class="card">
+
+<h3>🚛 TruckersMP ID</h3>
+
+<h2 id="truckersmpid">
+
+-
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>🏢 Company</h3>
+
+<h2 id="company">
+
+Independent Driver
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>📍 Province</h3>
+
+<h2 id="province">
+
+-
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>🌍 Country</h3>
+
+<h2 id="country">
+
+South Africa
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>📅 Joined League</h3>
+
+<h2 id="joined">
+
+-
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>🕒 Last Updated</h3>
+
+<h2 id="lastUpdated">
+
+-
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     LEAGUE ACHIEVEMENT
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="hero-card">
+
+<h2>
+
+🏅 League Achievement
+
+</h2>
+
+<h1 id="achievement">
+
+🌱 Rookie Driver
+
+</h1>
+
+<p>
+
+Achievements are earned by gaining points,
+completing deliveries and climbing the leaderboard.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     LEAGUE STATISTICS
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+📊 League Statistics
+
+</h2>
+
+<div class="stats-grid">
+
+<div class="card">
+
+<h3>🏆 Driver Title</h3>
+
+<h2 id="driverTitleCard">
+
+Rookie Driver
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>📈 League Percentile</h3>
+
+<h2 id="percentile">
+
+0%
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>⭐ Performance Rating</h3>
+
+<h2 id="performanceRatingCard">
+
+0%
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>🚚 Driver Status</h3>
+
+<h2 id="driverStatus">
+
+Pending
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     REFERRAL PROGRAM
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+🎁 Referral Program
+
+</h2>
+
+<div class="hero-card">
+
+<p>
+
+Invite your friends to join the TCL TruckersMP Cash League.
+
+For every approved driver who registers using your referral code,
+your referral count increases.
+
+</p>
+
+<br>
+
+<label style="font-weight:bold;">
+
+Your Referral Code
+
+</label>
+
+<div class="referral-box">
+
+<input
+id="myReferralCode"
+type="text"
+readonly>
+
+<button id="copyReferral">
+
+📋 Copy
+
+</button>
+
+<button id="shareReferral">
+
+📲 WhatsApp
+
+</button>
+
+</div>
+
+<br>
+
+<div class="stats-grid">
+
+<div class="card">
+
+<h3>
+
+👥 Referrals
+
+</h3>
+
+<h1 id="referralCount">
+
+0
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+💰 Rewards
+
+</h3>
+
+<h1 id="referralReward">
+
+R0
+
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     PROFILE SUMMARY
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+📋 Driver Summary
+
+</h2>
+
+<div id="profileSummary">
+
+<div class="hero-card">
+
+Loading profile...
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-bottom">
+
+© 2026 TCL TruckersMP Cash League
+
+<br><br>
+
+Built for the TruckersMP Community ❤️
+
+</div>
+
+</footer>
+
+<script src="../js/menu.js"></script>
+
+<script type="module" src="../js/profile.js"></script>
+
+</body>
+
+</html>

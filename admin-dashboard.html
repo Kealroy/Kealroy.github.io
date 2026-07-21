@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TCL Admin Dashboard</title>
+
+<link rel="stylesheet" href="../css/home.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+<nav class="navbar">
+
+<a href="../index.html" class="logo">
+
+🚛 <span>TCL</span> TruckersMP Cash League
+
+</a>
+
+<button id="menuToggle" class="menu-toggle">
+
+☰
+
+</button>
+
+<ul id="navMenu" class="nav-menu">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="../pages/register.html">Register</a></li>
+
+<li><a href="../pages/leaderboard.html">Leaderboard</a></li>
+
+<li><a href="../pages/seasons.html">Seasons</a></li>
+
+<li><a href="../pages/rules.html">Rules</a></li>
+
+<li><a href="../pages/contact.html">Contact</a></li>
+
+<li>
+    <a href="#" id="logoutBtn" class="admin-link">
+        Logout
+    </a>
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<h1>
+
+⚙️ Admin Dashboard
+
+</h1>
+
+<p>
+
+Manage registered drivers, approve applications,
+update deliveries, manage points and monitor the league.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="stats-grid">
+
+<div class="card">
+<h3>Total Drivers</h3>
+<h1 id="totalDrivers">0</h1>
+</div>
+
+<div class="card">
+<h3>Approved</h3>
+<h1 id="approvedDrivers">0</h1>
+</div>
+
+<div class="card">
+<h3>Pending</h3>
+<h1 id="pendingDrivers">0</h1>
+</div>
+
+<div class="card">
+
+<h3>Payments Verified</h3>
+
+<h1 id="verifiedPayments">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Payments Pending</h3>
+
+<h1 id="pendingPayments">0</h1>
+
+</div>
+
+<div class="card">
+<h3>Total Deliveries</h3>
+<h1 id="totalDeliveries">0</h1>
+</div>
+
+<div class="card">
+<h3>Total Points</h3>
+<h1 id="totalPoints">0</h1>
+</div>
+
+<div class="card">
+<h3>Prize Pool</h3>
+<h1>R1000</h1>
+</div>
+
+<div class="card">
+<h3>League Status</h3>
+<h1 style="color:#22C55E;">ACTIVE</h1>
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================
+     SEASON CONTROL PANEL
+========================================== -->
+
+<section class="admin-card">
+
+
+<h2>
+
+🏆 TCL Season Control
+
+</h2>
+
+
+
+<div id="currentSeason">
+
+
+Loading active season...
+
+</div>
+
+
+
+<br>
+
+
+
+<h3>
+
+Season History
+
+</h3>
+
+
+
+<div id="seasonHistory">
+
+
+Loading seasons...
+
+</div>
+
+
+
+</section>
+
+<!-- ==========================================
+     PLAYER SEASON FILTER
+========================================== -->
+
+<div class="admin-card">
+
+
+<h2>
+
+🚛 Driver Season Filter
+
+</h2>
+
+
+
+<label>
+
+Select Season
+
+</label>
+
+
+
+<select id="seasonFilter">
+
+
+<option value="all">
+
+All Seasons
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+<section>
+
+<div class="container">
+
+<div class="hero-card">
+
+<h2>
+
+Registered Drivers
+
+</h2>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchPlayer"
+placeholder="Search by driver name..."
+onkeyup="searchPlayers()">
+
+</div>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Rank</th>
+
+<th>Driver</th>
+
+<th>TruckersMP ID</th>
+
+<th>Deliveries</th>
+
+<th>Points</th>
+
+<th>Last Updated</th>
+
+<th>Payment</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="playersTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+🏆 Weekly Winners
+
+</h2>
+
+<div id="weeklyWinners" class="feature-grid">
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+⚡ Quick Actions
+
+</h2>
+
+<div class="stats-grid">
+
+<div class="card">
+
+<button
+class="btn btn-success"
+onclick="renderPlayers()">
+
+🔄 Refresh Drivers
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button
+class="btn btn-primary"
+onclick="loadWeeklyWinners()">
+
+🏆 Refresh Winners
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button
+class="btn btn-primary"
+onclick="renderTopFive()">
+
+🥇 Refresh Top 5
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button
+class="btn btn-danger"
+onclick="location.reload()">
+
+🔃 Reload Dashboard
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="admin-card">
+
+<h2>
+🏆 Season Management
+</h2>
+
+
+<form id="seasonForm">
+
+
+<input 
+type="text"
+id="seasonName"
+placeholder="Season Name"
+required>
+
+
+<input 
+type="date"
+id="seasonStart"
+required>
+
+
+<input 
+type="date"
+id="seasonEnd"
+required>
+
+
+<button type="submit">
+Create Season
+</button>
+
+
+</form>
+
+
+<div id="seasonMessage"></div>
+
+
+<hr>
+
+
+<h3>
+Current Active Season
+</h3>
+
+
+<div id="currentSeason">
+
+Loading...
+
+</div>
+
+
+</section>
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+📊 Driver Statistics
+
+</h2>
+
+<div class="stats-grid">
+
+<div class="card">
+
+<h3>Highest Score</h3>
+
+<h1 id="highestPoints">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Most Deliveries</h3>
+
+<h1 id="mostDeliveries">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Approved Drivers</h3>
+
+<h1 id="approvedCount">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Pending Drivers</h3>
+
+<h1 id="pendingCount">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Last Updated</h3>
+
+<h1 id="lastUpdatedTime">
+
+--
+
+</h1>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+🏆 Current Top 5 Drivers
+
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Rank</th>
+
+<th>Driver</th>
+
+<th>Points</th>
+
+<th>Deliveries</th>
+
+</tr>
+
+</thead>
+
+<tbody id="topFiveTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+📈 League Progress
+
+</h2>
+
+<div class="card">
+
+<h3>Approved Drivers Progress</h3>
+
+<progress
+id="leagueProgress"
+value="0"
+max="100"
+style="width:100%;height:25px;">
+
+</progress>
+
+<p id="leagueProgressText">
+
+0% Approved
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+📝 Pending Driver Applications
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Photo</th>
+
+<th>Driver</th>
+
+<th>TruckersMP ID</th>
+
+<th>Province</th>
+
+<th>Payment</th>
+
+<th>Approval</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="pendingPlayersTable">
+
+<tr>
+
+<td colspan="7" style="text-align:center;padding:25px;">
+Loading pending applications...
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="../js/menu.js"></script>
+<script type="module" src="../js/admin-seasons.js"></script>
+<script type="module">
+
+    
+
+    import { db, auth } from "../js/firebase.js";
+
+import {
+    collection,
+    getDocs,
+    updateDoc,
+    deleteDoc,
+    doc,
+    query,
+    where,
+    increment
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+        window.location.href = "admin-login.html";
+        return;
+    }
+
+    // Replace with your admin email
+    const adminEmail = "kenwinrickert7@gmail.com";
+
+    if (user.email !== adminEmail) {
+
+        alert("Access Denied!");
+
+        await signOut(auth);
+
+        window.location.href = "admin-login.html";
+
+        return;
+    }
+
+    await loadPlayers();
+
+});
+
+let players = [];
+
+const table = document.getElementById("playersTable");
+
+const totalDrivers = document.getElementById("totalDrivers");
+const approvedDrivers = document.getElementById("approvedDrivers");
+const pendingDrivers = document.getElementById("pendingDrivers");
+const totalDeliveries = document.getElementById("totalDeliveries");
+const totalPoints = document.getElementById("totalPoints");
+
+const highestPoints = document.getElementById("highestPoints");
+
+const mostDeliveries = document.getElementById("mostDeliveries");
+
+const approvedCount = document.getElementById("approvedCount");
+
+const pendingCount = document.getElementById("pendingCount");
+
+const verifiedPayments = document.getElementById("verifiedPayments");
+
+const pendingPayments = document.getElementById("pendingPayments");
+
+function savePlayers(){
+
+    // Data is stored directly in Firebase.
+    // No localStorage required.
+
+}
+
+function updateStats(){
+
+    const approvedPlayers =
+        players.filter(player => player.approved);
+
+    const pendingPlayers =
+        players.filter(player => !player.approved);
+
+        const paidPlayers =
+    players.filter(player => player.paymentVerified);
+
+const unpaidPlayers =
+    players.filter(player => !player.paymentVerified);
+
+    totalDrivers.textContent = players.length;
+
+    approvedDrivers.textContent =
+        approvedPlayers.length;
+
+    pendingDrivers.textContent =
+        pendingPlayers.length;
+
+    approvedCount.textContent =
+        approvedPlayers.length;
+
+    pendingCount.textContent =
+        pendingPlayers.length;
+
+        if (verifiedPayments) {
+    verifiedPayments.textContent = paidPlayers.length;
+}
+
+if (pendingPayments) {
+    pendingPayments.textContent = unpaidPlayers.length;
+}
+
+    const totalDeliveriesValue =
+        players.reduce((total, player) =>
+            total + Number(player.deliveries || 0), 0);
+
+    const totalPointsValue =
+        players.reduce((total, player) =>
+            total + Number(player.points || 0), 0);
+
+    totalDeliveries.textContent =
+        totalDeliveriesValue;
+
+    totalPoints.textContent =
+        totalPointsValue;
+
+ highestPoints.textContent =
+    players.length
+        ? Math.max(...players.map(player =>
+            Number(player.points || 0)))
+        : 0;
+
+mostDeliveries.textContent =
+    players.length
+        ? Math.max(...players.map(player =>
+            Number(player.deliveries || 0)))
+        : 0;
+
+const lastUpdated =
+document.getElementById("lastUpdatedTime");
+
+if(lastUpdated){
+
+    lastUpdated.textContent =
+    new Date().toLocaleTimeString();
+
+}
+
+const progress =
+document.getElementById("leagueProgress");
+
+const progressText =
+document.getElementById("leagueProgressText");
+
+if(progress){
+
+    const percentage =
+    players.length
+        ? Math.round(
+            approvedPlayers.length /
+            players.length * 100
+        )
+        : 0;
+
+    progress.value = percentage;
+
+    progressText.textContent =
+        percentage + "% Approved";
+
+}
+
+}
+
+
+/* ======================================================
+   REFRESH ADMIN DASHBOARD
+====================================================== */
+
+function refreshDashboard(){
+
+    renderPlayers();
+
+    renderPendingPlayers();
+
+    renderTopFive();
+
+    loadWeeklyWinners();
+
+    updateStats();
+
+}
+
+window.renderPlayers = function(){
+
+    table.innerHTML = "";
+
+    if(players.length === 0){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="9" style="text-align:center;padding:20px;">
+                    No registered drivers found.
+                </td>
+            </tr>
+        `;
+
+        updateStats();
+        return;
+
+    }
+
+    players.sort((a,b)=>
+        Number(b.points || 0) - Number(a.points || 0)
+    );
+
+    players.forEach((player,index)=>{
+
+        const row = document.createElement("tr");
+
+        if(index === 0){
+            row.style.background = "#2C2200";
+        }
+
+        row.innerHTML = `
+
+        <td>
+            ${
+                index===0 ? "🥇" :
+                index===1 ? "🥈" :
+                index===2 ? "🥉" :
+                "#" + (index+1)
+            }
+        </td>
+
+        <td>
+${player.username || player.fullname || player.name || "-"}
+</td>
+
+        <td>
+            ${player.truckersmpid || "-"}
+        </td>
+
+        <td>
+            <input
+                type="number"
+                value="${player.deliveries || 0}"
+                style="width:80px"
+                onchange="updateDeliveries(${index}, this.value)">
+        </td>
+
+        <td>
+            <input
+                type="number"
+                value="${player.points || 0}"
+                style="width:80px"
+                onchange="updatePoints(${index}, this.value)">
+        </td>
+
+        <td>
+            ${
+                player.lastUpdated
+                ? new Date(player.lastUpdated).toLocaleString()
+                : "-"
+            }
+        </td>
+
+   <td>
+    ${
+        player.paymentVerified
+        ? '<span class="badge badge-success">💳 Paid</span>'
+        : '<span class="badge badge-danger">❌ Unpaid</span>'
+    }
+</td>
+
+<td>
+    ${
+        player.approved
+        ? '<span class="badge badge-success">✅ Approved</span>'
+        : '<span class="badge badge-warning">⏳ Pending</span>'
+    }
+</td>
+
+        <td>
+
+            ${
+    !player.paymentVerified
+    ? `
+    <button
+        class="btn btn-primary"
+        onclick="verifyPayment(${index})">
+        💳 Verify Payment
+    </button>
+    `
+    : !player.approved
+    ? `
+    <button
+        class="btn btn-success"
+        onclick="approvePlayer(${index})">
+        ✔ Approve
+    </button>
+    `
+    : ""
+}
+
+            <button
+                class="btn btn-primary"
+                onclick="editPlayer(${index})">
+                ✏ Edit
+            </button>
+
+            <button
+                class="btn btn-danger"
+                onclick="deletePlayer(${index})">
+                🗑 Delete
+            </button>
+
+        </td>
+
+        `;
+
+        table.appendChild(row);
+
+    });
+
+    updateStats();
+
+}
+
+window.updateDeliveries = async function(index,value){
+
+    try{
+
+        const player = players[index];
+
+
+        const newDeliveries = Number(value);
+
+
+        await updateDoc(
+            doc(db,"players",player.id),
+            {
+                deliveries:newDeliveries,
+                lastUpdated:new Date().toISOString()
+            }
+        );
+
+
+        players[index].deliveries = newDeliveries;
+
+
+        players[index].lastUpdated =
+        new Date().toISOString();
+
+
+        savePlayers();
+
+
+        refreshDashboard();
+
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not update deliveries.");
+
+    }
+
+}
+
+window.updatePoints = async function(index,value){
+
+    try{
+
+        const player = players[index];
+
+
+        const newPoints = Number(value);
+
+
+        await updateDoc(
+            doc(db,"players",player.id),
+            {
+                points:newPoints,
+                lastUpdated:new Date().toISOString()
+            }
+        );
+
+
+        players[index].points = newPoints;
+
+
+        players[index].lastUpdated =
+        new Date().toISOString();
+
+
+        savePlayers();
+
+
+        refreshDashboard();
+
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not update points.");
+
+    }
+
+}
+
+window.deletePlayer = async function(index){
+
+    if(!confirm("Delete this player permanently?")){
+        return;
+    }
+
+    try{
+
+        const player = players[index];
+
+
+        await deleteDoc(
+            doc(db,"players",player.id)
+        );
+
+
+        players.splice(index,1);
+
+
+        savePlayers();
+
+
+        refreshDashboard();
+
+
+        alert("Player deleted successfully.");
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not delete player.");
+
+    }
+
+}
+
+window.verifyPayment = async function(index){
+
+    const player = players[index];
+
+    if(
+        !confirm(
+            `Have you confirmed payment from "${player.username}"?`
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        await updateDoc(
+            doc(db, "players", player.id),
+            {
+                paymentVerified: true,
+                paymentDate: new Date().toISOString(),
+                lastUpdated: new Date().toISOString()
+            }
+        );
+
+        players[index].paymentVerified = true;
+        players[index].paymentDate = new Date().toISOString();
+        players[index].lastUpdated = new Date().toISOString();
+
+        refreshDashboard();
+
+        alert("Payment verified successfully.");
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not verify payment.");
+
+    }
+
+}
+
+window.approvePlayer = async function(index){
+
+    try{
+
+        const player = players[index];
+
+        if(!player.paymentVerified){
+
+            alert("Verify the player's payment before approving.");
+
+            return;
+
+        }
+
+        await updateDoc(
+            doc(db,"players",player.id),
+            {
+                approved:true,
+                approvedDate:new Date().toISOString(),
+                lastUpdated:new Date().toISOString()
+            }
+        );
+
+        /* ==========================================
+           REFERRAL REWARD
+        ========================================== */
+
+        if(player.referredBy){
+
+            const referralQuery = query(
+
+                collection(db,"players"),
+
+                where(
+                    "referralCode",
+                    "==",
+                    player.referredBy
+                )
+
+            );
+
+            const referralSnapshot =
+                await getDocs(referralQuery);
+
+            if(!referralSnapshot.empty){
+
+                const referrer =
+                    referralSnapshot.docs[0];
+
+                await updateDoc(
+
+                    referrer.ref,
+
+                    {
+
+                        referralCount:
+                            increment(1)
+
+                    }
+
+                );
+
+            }
+
+        }
+
+        players[index].approved = true;
+
+        players[index].approvedDate =
+            new Date().toISOString();
+
+        players[index].lastUpdated =
+            new Date().toISOString();
+
+        refreshDashboard();
+
+        alert("Driver approved successfully.");
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not approve player.");
+
+    }
+
+}
+
+window.loadWeeklyWinners = function(){
+
+    const winnersContainer =
+        document.getElementById("weeklyWinners");
+
+    if(!winnersContainer) return;
+
+    winnersContainer.innerHTML = "";
+
+    const winners = [...players]
+
+        .filter(player => player.approved)
+
+        .sort((a,b)=>{
+
+            if(Number(b.points || 0) !== Number(a.points || 0)){
+
+                return Number(b.points || 0) -
+                       Number(a.points || 0);
+
+            }
+
+            return Number(b.deliveries || 0) -
+                   Number(a.deliveries || 0);
+
+        })
+
+        .slice(0,5);
+
+    if(winners.length === 0){
+
+        winnersContainer.innerHTML = `
+
+            <div class="feature-card">
+
+                <h2>No Weekly Winners Yet</h2>
+
+                <p>Approve drivers and award points to display winners.</p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    winners.forEach((player,index)=>{
+
+        const medal =
+            index===0 ? "🥇" :
+            index===1 ? "🥈" :
+            index===2 ? "🥉" :
+            "#" + (index+1);
+
+        winnersContainer.innerHTML += `
+
+            <div class="feature-card">
+
+                <h2>
+
+                    ${medal}
+
+                    ${player.username || player.fullname || player.name || "-"}
+
+                </h2>
+
+                <p>
+
+                    🏆 Points:
+                    ${Number(player.points || 0)}
+
+                </p>
+
+                <p>
+
+                    🚚 Deliveries:
+                    ${Number(player.deliveries || 0)}
+
+                </p>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+window.renderTopFive = function(){
+
+    const topFiveTable =
+        document.getElementById("topFiveTable");
+
+    if(!topFiveTable) return;
+
+    topFiveTable.innerHTML = "";
+
+    const topPlayers = [...players]
+
+        .filter(player => player.approved)
+
+        .sort((a,b)=>{
+
+            if(Number(b.points || 0) !== Number(a.points || 0)){
+
+                return Number(b.points || 0) -
+                       Number(a.points || 0);
+
+            }
+
+            return Number(b.deliveries || 0) -
+                   Number(a.deliveries || 0);
+
+        })
+
+        .slice(0,5);
+
+    if(topPlayers.length === 0){
+
+        topFiveTable.innerHTML = `
+            <tr>
+                <td colspan="4" style="text-align:center;padding:20px;">
+                    No approved drivers yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+    topPlayers.forEach((player,index)=>{
+
+        topFiveTable.innerHTML += `
+
+        <tr>
+
+            <td>
+
+                ${
+                    index===0 ? "🥇" :
+                    index===1 ? "🥈" :
+                    index===2 ? "🥉" :
+                    "#" + (index+1)
+                }
+
+            </td>
+
+            <td>
+
+                ${player.username || player.fullname || player.name || "-"}
+
+            </td>
+
+            <td>
+
+                ${Number(player.points || 0)}
+
+            </td>
+
+            <td>
+
+                ${Number(player.deliveries || 0)}
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+function renderPendingPlayers(){
+
+    const pendingTable =
+        document.getElementById("pendingPlayersTable");
+
+    if(!pendingTable) return;
+
+    pendingTable.innerHTML = "";
+
+    const pendingPlayers = players
+        .map((player,index)=>({player,index}))
+        .filter(item=>!item.player.approved);
+
+    if(pendingPlayers.length === 0){
+
+        pendingTable.innerHTML = `
+            <tr>
+                <td colspan="6" style="text-align:center;padding:20px;">
+                    No pending applications.
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+    pendingPlayers.forEach(item=>{
+
+        const player = item.player;
+        const index = item.index;
+
+        pendingTable.innerHTML += `
+
+        <tr>
+
+            <td>
+
+                <img
+                    src="${player.avatar || '../images/default-profile.png'}"
+                    alt="Driver"
+                    width="50"
+                    height="50"
+                    style="border-radius:50%;object-fit:cover;">
+
+            </td>
+
+            <td>
+
+                ${player.username || player.fullname || player.name || "-"}
+
+            </td>
+
+            <td>
+
+                ${player.truckersmpid || "-"}
+
+            </td>
+
+            <td>
+    ${player.province || "-"}
+</td>
+
+           <td>
+
+    ${
+        player.paymentVerified
+        ? '<span class="badge badge-success">💳 Paid</span>'
+        : '<span class="badge badge-warning">💳 Payment Pending</span>'
+    }
+
+</td>
+
+          <td>
+
+    ${
+        !player.paymentVerified
+        ? `
+        <button
+            class="btn btn-primary"
+            onclick="verifyPayment(${index})">
+            💳 Verify Payment
+        </button>
+        `
+        : `
+        <button
+            class="btn btn-success"
+            onclick="approvePlayer(${index})">
+            ✔ Approve
+        </button>
+        `
+    }
+
+    <button
+        class="btn btn-danger"
+        onclick="rejectPlayer(${index})">
+        ✖ Reject
+    </button>
+
+</td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+window.editPlayer = async function(index){
+
+    const player = players[index];
+
+    const currentName =
+        player.fullname ||
+        player.name ||
+        player.username ||
+        "";
+
+    const newName = prompt("Driver Name", currentName);
+
+    if(newName === null){
+        return;
+    }
+
+    if(newName.trim() === ""){
+        alert("Driver name cannot be empty.");
+        return;
+    }
+
+    try{
+
+        const updatedName = newName.trim();
+
+await updateDoc(
+    doc(db, "players", player.id),
+    {
+    username: updatedName,
+    lastUpdated: new Date().toISOString()
+}
+);
+
+        players[index].fullname = updatedName;
+players[index].username = updatedName;
+players[index].name = updatedName;
+players[index].lastUpdated = new Date().toISOString();
+        
+
+        refreshDashboard();
+
+        alert("Driver updated successfully.");
+
+    }
+
+    catch(error){
+
+        console.error(error);
+        alert("Could not update driver.");
+
+    }
+
+}
+
+document.getElementById("logoutBtn").onclick = async function(){
+
+    await signOut(auth);
+
+    window.location.href="admin-login.html";
+
+};
+
+async function loadPlayers(){
+
+    try{
+
+        const snapshot = await getDocs(
+            collection(db, "players")
+        );
+
+        players = [];
+
+        snapshot.forEach(doc=>{
+
+    players.push({
+
+    id: doc.id,
+
+    fullname: "",
+    username: "",
+    name: "",
+    truckersmpid: "",
+    country: "",
+    avatar: "",
+    points: 0,
+    deliveries: 0,
+    approved: false,
+    lastUpdated: "",
+
+    ...doc.data()
+
+});
+
+        });
+
+        console.log(players);
+
+       refreshDashboard();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not load players from Firebase.");
+
+    }
+
+}
+
+window.searchPlayers = function(){
+
+    const value =
+        document
+        .getElementById("searchPlayer")
+        .value
+        .toLowerCase();
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for(let i=0;i<rows.length;i++){
+
+        const driver =
+            rows[i]
+            .textContent
+            .toLowerCase();
+
+        rows[i].style.display =
+            driver.includes(value)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+window.rejectPlayer = async function(index){
+
+    if(!confirm("Reject this driver application permanently?")){
+        return;
+    }
+
+
+    try{
+
+        const player = players[index];
+
+
+        await deleteDoc(
+            doc(db,"players",player.id)
+        );
+
+
+        players.splice(index,1);
+
+
+        savePlayers();
+
+
+        refreshDashboard();
+
+
+        alert("Application rejected.");
+
+    }
+
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not reject application.");
+
+    }
+
+}
+
+</script>
+<script type="module" src="../js/admin-season-display.js"></script>
+<script type="module" src="../js/admin-season-filter.js"></script>
+</body>
+
+</html>

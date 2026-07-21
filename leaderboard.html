@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TCL TruckersMP Cash League | Leaderboard</title>
+
+<link rel="stylesheet" href="../css/home.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+<nav class="navbar">
+
+<a href="../index.html" class="logo">
+🚛 <span>TCL</span> TruckersMP Cash League
+</a>
+
+<button id="menuToggle" class="menu-toggle">
+☰
+</button>
+
+<ul id="navMenu" class="nav-menu">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="register.html">Register</a></li>
+
+<li><a href="leaderboard.html">Leaderboard</a></li>
+
+<li><a href="seasons.html">Seasons</a></li>
+
+<li><a href="rules.html">Rules</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+<li><a href="admin-login.html" class="admin-link">Admin</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<h1>🏆 League Leaderboard</h1>
+
+<p>
+
+Watch the best TruckersMP drivers compete for weekly cash prizes.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+Current Standings
+
+</h2>
+
+<input
+type="text"
+id="searchDriver"
+placeholder="Search Driver..."
+class="search-box">
+
+<br><br>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Rank</th>
+
+<th>Driver</th>
+
+<th>Company</th>
+
+<th>Deliveries</th>
+
+<th>Points</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="leaderboardBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-bottom">
+
+© 2026 TCL TruckersMP Cash League
+
+</div>
+
+</footer>
+
+<script src="../js/menu.js"></script>
+
+<script type="module">
+
+import { db } from "../js/firebase.js";
+
+import {
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+const tbody = document.getElementById("leaderboardBody");
+const search = document.getElementById("searchDriver");
+
+let players = [];
+
+async function loadLeaderboard() {
+
+    try {
+
+        const snapshot = await getDocs(collection(db, "players"));
+
+        players = [];
+
+        snapshot.forEach(doc => {
+
+            players.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        renderLeaderboard();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        tbody.innerHTML = `
+
+        <tr>
+
+            <td colspan="6">
+
+                Could not load leaderboard.
+
+            </td>
+
+        </tr>
+
+        `;
+
+    }
+
+}
+
+function renderLeaderboard() {
+
+    tbody.innerHTML = "";
+
+    const approved = players
+
+        .filter(player => player.approved)
+
+        .sort((a, b) => {
+
+            if (Number(b.points || 0) !== Number(a.points || 0)) {
+
+                return Number(b.points || 0) -
+
+                       Number(a.points || 0);
+
+            }
+
+            return Number(b.deliveries || 0) -
+
+                   Number(a.deliveries || 0);
+
+        });
+
+    if (approved.length === 0) {
+
+        tbody.innerHTML = `
+
+        <tr>
+
+            <td colspan="6">
+
+                No approved drivers.
+
+            </td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
+
+    approved.forEach((driver, index) => {
+
+        const row = document.createElement("tr");
+
+        if (index === 0) row.classList.add("rank-gold");
+        if (index === 1) row.classList.add("rank-silver");
+        if (index === 2) row.classList.add("rank-bronze");
+
+        row.innerHTML = `
+
+        <td>
+
+            ${
+                index===0 ? "🥇" :
+                index===1 ? "🥈" :
+                index===2 ? "🥉" :
+                "#" + (index+1)
+            }
+
+        </td>
+
+        <td>
+
+            <a class="driver-link"
+
+               href="profile.html?id=${driver.id}">
+
+               ${driver.username || driver.fullname || driver.name || "-"}
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ${driver.company || "-"}
+
+        </td>
+
+        <td>
+
+            ${driver.deliveries || 0}
+
+        </td>
+
+        <td>
+
+            ${driver.points || 0}
+
+        </td>
+
+        <td>
+
+            <span class="badge badge-success">
+
+                Active
+
+            </span>
+
+        </td>
+
+        `;
+
+        tbody.appendChild(row);
+
+    });
+
+}
+
+search.addEventListener("keyup", () => {
+
+    const value = search.value.toLowerCase();
+
+    document.querySelectorAll("#leaderboardBody tr").forEach(row => {
+
+        row.style.display =
+
+            row.textContent.toLowerCase().includes(value)
+
+            ? ""
+
+            : "none";
+
+    });
+
+});
+
+loadLeaderboard();
+
+</script>
+</body>
+
+</html>

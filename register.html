@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Register for the TCL TruckersMP Cash League and compete for weekly cash prizes.">
+
+<meta name="keywords"
+content="TruckersMP, Euro Truck Simulator 2, ETS2, Cash League, TCL">
+
+<meta name="author"
+content="TCL TruckersMP Cash League">
+
+<title>Driver Registration | TCL TruckersMP Cash League</title>
+
+<link rel="stylesheet" href="../css/home.css">
+
+<style>
+
+/* ==========================================================
+   REGISTER PAGE
+========================================================== */
+
+.register-page{
+
+    min-height:100vh;
+
+    background:#0b0b0b;
+
+    padding:40px 20px;
+
+}
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.register-hero{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+.register-hero h1{
+
+    color:#f5c542;
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.register-hero p{
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.register-card{
+
+    max-width:900px;
+
+    margin:30px auto;
+
+    background:#151515;
+
+    border:1px solid #2d2d2d;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.45);
+
+}
+
+.register-card h2{
+
+    color:#f5c542;
+
+    margin-bottom:20px;
+
+}
+
+.register-card p{
+
+    color:white;
+
+    line-height:1.8;
+
+}
+
+.register-card ul{
+
+    color:white;
+
+    line-height:2;
+
+    padding-left:20px;
+
+}
+
+/* ==========================================================
+   SEASON NOTICE
+========================================================== */
+
+.season-box{
+
+    border-left:5px solid #f5c542;
+
+}
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+.register-form{
+
+    display:grid;
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    color:white;
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+
+}
+
+.form-group input,
+
+.form-group select{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#222;
+
+    color:white;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+.form-group input:focus,
+
+.form-group select:focus{
+
+    outline:none;
+
+    border:2px solid #f5c542;
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.btn-primary{
+
+    background:#f5c542;
+
+    color:#111;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:#ffd966;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-primary:disabled{
+
+    opacity:.7;
+
+    cursor:not-allowed;
+
+}
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+.register-message{
+
+    min-height:28px;
+
+    margin-top:15px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:768px){
+
+.register-hero{
+
+    padding:40px 15px;
+
+}
+
+.register-hero h1{
+
+    font-size:32px;
+
+}
+
+.register-card{
+
+    padding:20px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+    <header class="site-header">
+
+    <nav class="navbar">
+
+        <a href="../index.html" class="logo">
+            🚛 TCL TruckersMP Cash League
+        </a>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="leaderboard.html">
+                Leaderboard
+            </a>
+
+            <a href="register.html" class="active">
+                Register
+            </a>
+
+            <a href="rules.html">
+                Rules
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<main class="register-page">
+
+    <!-- HERO -->
+
+    <section class="register-hero">
+
+        <h1>
+            🚛 Join the TCL TruckersMP Cash League
+        </h1>
+
+        <p>
+
+            Register today and compete against South Africa's best
+            TruckersMP drivers. Earn points, climb the leaderboard,
+            and compete every week for real cash prizes.
+
+        </p>
+
+    </section>
+
+    <!-- SEASON NOTICE -->
+
+    <section class="register-card season-box">
+
+        <h2>
+            🏆 Season Registration
+        </h2>
+
+        <p>
+
+            Every driver must register at the beginning of each new
+            TCL season.
+
+            <br><br>
+
+            Registrations from previous seasons do not carry over.
+
+            <br><br>
+
+            Once registration has been approved, your profile will
+            appear on the official TCL leaderboard.
+
+        </p>
+
+    </section>
+
+    <!-- REQUIREMENTS -->
+
+    <section class="register-card">
+
+        <h2>
+            📋 Registration Requirements
+        </h2>
+
+        <ul>
+
+            <li>✔ Registration Fee: <strong>R25</strong></li>
+
+            <li>✔ Valid TruckersMP Account</li>
+
+            <li>✔ Valid Steam Community Profile</li>
+
+            <li>✔ Discord Account</li>
+
+            <li>✔ WhatsApp Number</li>
+
+            <li>✔ Payment Verification Required</li>
+
+            <li>✔ Approval Required Before Competing</li>
+
+            <li>✔ Agree to Follow All TCL Rules</li>
+
+        </ul>
+
+    </section>
+<!-- PAYMENT INFORMATION -->
+
+<section class="register-card">
+
+    <h2>
+        💳 Payment Information
+    </h2>
+
+    <p>
+
+        Registration Fee:
+
+        <br><br>
+
+        <strong style="font-size:26px;color:#f5c542;">
+            R25
+        </strong>
+
+        <br><br>
+
+        <strong>Bank Details</strong>
+
+        <br><br>
+
+        Bank: <strong>STANDARD BANK</strong><br>
+
+        Account Name: <strong>TCL TruckersMP Cash League</strong><br>
+
+        Account Number: <strong>10131094619</strong><br>
+
+        Branch Code: <strong>7654</strong><br>
+
+        Account Type: <strong>Savings</strong>
+
+        <br><br>
+
+        <strong>Payment Reference</strong>
+
+        <br>
+
+        Use your <strong>TruckersMP Username</strong> as the payment reference.
+
+        <br><br>
+
+        <strong>Send Proof of Payment</strong>
+
+        <br>
+
+        WhatsApp:
+        <strong>+27 62 177 0416</strong>
+
+        <br><br>
+
+        After payment has been verified by a TCL Administrator,
+        your account will be approved and you will appear on the
+        official TCL Leaderboard.
+
+    </p>
+
+    </section>
+        <!-- REGISTRATION FORM -->
+
+    <section class="register-card">
+
+        <h2>
+            🚛 Driver Registration
+        </h2>
+
+        <form id="registerForm" class="register-form" autocomplete="on">
+
+            <!-- TruckersMP Username -->
+
+            <div class="form-group">
+
+                <label for="username">
+                    TruckersMP Username *
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    autocomplete="username"
+                    placeholder="Enter your TruckersMP Username"
+                    required>
+
+            </div>
+
+            <!-- TruckersMP ID -->
+
+            <div class="form-group">
+
+                <label for="truckersmpid">
+                    TruckersMP ID *
+                </label>
+
+                <input
+                    type="text"
+                    id="truckersmpid"
+                    name="truckersmpid"
+                    inputmode="numeric"
+                    placeholder="Enter your TruckersMP ID"
+                    required>
+
+            </div>
+
+            <!-- Steam Profile -->
+
+            <div class="form-group">
+
+                <label for="steam">
+                    Steam Community Profile *
+                </label>
+
+                <input
+                    type="url"
+                    id="steam"
+                    name="steam"
+                    autocomplete="url"
+                    placeholder="https://steamcommunity.com/id/yourprofile"
+                    required>
+
+            </div>
+
+            <!-- Company -->
+
+            <div class="form-group">
+
+                <label for="company">
+                    VTC Company (Optional)
+                </label>
+
+                <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    autocomplete="organization"
+                    placeholder="Your VTC Company">
+
+            </div>
+
+            <!-- Discord -->
+
+            <div class="form-group">
+
+                <label for="discord">
+                    Discord Username *
+                </label>
+
+                <input
+                    type="text"
+                    id="discord"
+                    name="discord"
+                    autocomplete="off"
+                    placeholder="Example: Driver#1234"
+                    required>
+
+            </div>
+
+            <!-- WhatsApp -->
+
+            <div class="form-group">
+
+                <label for="phone">
+                    WhatsApp Number *
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    placeholder="Example: 0821234567"
+                    required>
+
+            </div>
+
+            <!-- Province -->
+
+            <div class="form-group">
+
+                <label for="province">
+                    Province *
+                </label>
+
+                <select
+                    id="province"
+                    name="province"
+                    required>
+
+                    <option value="">
+                        Select Your Province
+                    </option>
+
+                    <option value="Eastern Cape">
+                        Eastern Cape
+                    </option>
+
+                    <option value="Free State">
+                        Free State
+                    </option>
+
+                    <option value="Gauteng">
+                        Gauteng
+                    </option>
+
+                    <option value="KwaZulu-Natal">
+                        KwaZulu-Natal
+                    </option>
+
+                    <option value="Limpopo">
+                        Limpopo
+                    </option>
+
+                    <option value="Mpumalanga">
+                        Mpumalanga
+                    </option>
+
+                    <option value="Northern Cape">
+                        Northern Cape
+                    </option>
+
+                    <option value="North West">
+                        North West
+                    </option>
+
+                    <option value="Western Cape">
+                        Western Cape
+                    </option>
+
+                </select>
+
+            </div>
+<!-- Referral Code -->
+
+<div class="form-group">
+
+    <label for="referral">
+        Referral Code (Optional)
+    </label>
+
+    <input
+        type="text"
+        id="referral"
+        name="referral"
+        placeholder="Enter a referral code"
+        autocomplete="off">
+
+</div>
+            <!-- Submit -->
+
+            <button
+                type="submit"
+                id="submitButton"
+                class="btn-primary">
+
+                🚛 Register Driver
+
+            </button>
+
+            <!-- Registration Message -->
+
+            <p
+                id="registerMessage"
+                class="register-message"
+                aria-live="polite">
+            </p>
+
+        </form>
+
+    </section>
+        <!-- IMPORTANT NOTICE -->
+
+    <section class="register-card">
+
+        <h2>
+            ℹ️ Before You Submit
+        </h2>
+
+        <p>
+
+            By registering, you confirm that:
+
+            <br><br>
+
+            ✔ All information you provide is accurate.
+
+            <br><br>
+
+            ✔ You agree to follow all TCL TruckersMP Cash League rules.
+
+            <br><br>
+
+            ✔ You understand that registration does not guarantee approval.
+
+            <br><br>
+
+            ✔ Your account will remain <strong>Pending</strong> until your
+            registration fee has been verified by a TCL Administrator.
+
+            <br><br>
+
+            ✔ Players who submit false information may have their registration rejected.
+
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div class="footer-bottom">
+
+        © 2026 TCL TruckersMP Cash League
+
+        <br><br>
+
+        Built for the TruckersMP Community ❤️
+
+    </div>
+
+</footer>
+
+<!-- JavaScript -->
+
+<script src="../js/menu.js"></script>
+
+<script type="module" src="../js/register.js"></script>
+
+</body>
+
+</html>
