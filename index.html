@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ==========================================
+         TCL TRUCKERSMP CASH LEAGUE
+         HOME PAGE
+    ========================================== -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="South Africa's Premier TruckersMP Cash League. Compete in Euro Truck Simulator 2 Multiplayer, climb the leaderboard and win weekly cash prizes.">
+
+    <meta name="keywords"
+          content="TruckersMP, ETS2, Euro Truck Simulator 2, Cash League, South Africa">
+
+    <meta name="theme-color"
+          content="#0B1220">
+
+    <title>TCL TruckersMP Cash League</title>
+
+    <link rel="icon"
+          href="images/logo.png"
+          type="image/png">
+
+    <link rel="stylesheet"
+          href="css/home.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     NAVIGATION
+========================================== -->
+
+<header class="site-header">
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+
+            🚛
+            <span>TCL</span>
+            TruckersMP Cash League
+
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open Menu">
+
+            ☰
+
+        </button>
+
+       <ul id="navMenu" class="nav-menu">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="pages/register.html">Register</a></li>
+
+<li><a href="pages/leaderboard.html">Leaderboard</a></li>
+
+<li><a href="pages/seasons.html">Seasons</a></li>
+
+<li><a href="pages/rules.html">Rules</a></li>
+
+<li><a href="pages/contact.html">Contact</a></li>
+
+<li><a href="pages/admin-login.html" class="admin-link">Admin</a></li>
+
+</ul>
+
+    </nav>
+
+</header>
+
+<!-- ==========================================
+     HERO
+========================================== -->
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <div class="live-badge">
+
+                🟢 REGISTRATION OPEN
+
+            </div>
+
+            <h1>
+
+                South Africa's Premier
+
+                <span>
+
+                    TruckersMP
+
+                </span>
+
+                Cash League
+
+            </h1>
+
+            <p>
+
+                Join South Africa's most exciting Euro Truck Simulator 2 multiplayer competition.
+
+                Complete deliveries.
+
+                Earn league points.
+
+                Climb the leaderboard.
+
+                Win weekly cash prizes.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="pages/register.html"
+                    class="btn btn-primary">
+
+                    Register Now
+
+                </a>
+
+                <a
+                    href="pages/leaderboard.html"
+                    class="btn btn-secondary">
+
+                    View Leaderboard
+
+                </a>
+
+            </div>
+
+            <div class="countdown-box">
+
+                <h3>
+
+                    Season 1 Starts In
+
+                </h3>
+
+                <div id="countdown">
+
+                    Loading...
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+
+            <h2>
+
+                League Information
+
+            </h2>
+
+            <div class="hero-stat">
+
+                <span>💰 Weekly Prize Pool</span>
+
+                <strong>R1,000</strong>
+
+            </div>
+
+            <div class="hero-stat">
+
+                <span>👥 Registered Drivers</span>
+
+                <strong id="playersCountHero">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="hero-stat">
+
+                <span>🏁 Current Season</span>
+
+                <strong>
+
+                    Season 1
+
+                </strong>
+
+            </div>
+
+            <div class="hero-stat">
+
+                <span>🚛 League Status</span>
+
+                <strong class="status-open">
+
+                    OPEN
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     QUICK STATISTICS
+========================================== -->
+
+<section class="stats">
+
+    <div class="container">
+
+        <h2 class="section-title">
+
+            League Statistics
+
+        </h2>
+
+        <div class="stats-grid">
+
+            <div class="card">
+
+                <h3>
+
+                    👥 Drivers
+
+                </h3>
+
+                <h1 id="playersCount">
+
+                    0
+
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    🚚 Deliveries
+
+                </h3>
+
+                <h1 id="deliveriesCount">
+
+                    0
+
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    🛣 Distance
+
+                </h3>
+
+                <h1 id="distanceCount">
+
+                    0 KM
+
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    🏆 Current Leader
+
+                </h3>
+
+                <h1 id="leaderName">
+
+                    Loading...
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ==========================================
+     TOP DRIVERS
+========================================== -->
+
+<section class="top-drivers">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🏆 Current Top Drivers
+        </h2>
+
+        <p class="section-subtitle">
+            The highest ranked drivers in the TCL TruckersMP Cash League.
+        </p>
+
+        <div class="podium-grid">
+
+            <div class="podium-card second">
+
+                <div class="podium-medal">🥈</div>
+
+                <h3 id="top2">
+                    Loading...
+                </h3>
+
+                <p>Second Place</p>
+
+            </div>
+
+            <div class="podium-card first">
+
+                <div class="podium-medal">🥇</div>
+
+                <h3 id="top1">
+                    Loading...
+                </h3>
+
+                <p>League Champion</p>
+
+            </div>
+
+            <div class="podium-card third">
+
+                <div class="podium-medal">🥉</div>
+
+                <h3 id="top3">
+                    Loading...
+                </h3>
+
+                <p>Third Place</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     WEEKLY PRIZE POOL
+========================================== -->
+
+<section class="prizes">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            💰 Weekly Prize Pool
+        </h2>
+
+        <p class="section-subtitle">
+            Finish in the Top 5 each week and win real cash prizes.
+        </p>
+
+        <div class="prize-grid">
+
+            <div class="prize-card gold">
+                <span>🥇</span>
+                <h3>1st Place</h3>
+                <h1>R500</h1>
+            </div>
+
+            <div class="prize-card silver">
+                <span>🥈</span>
+                <h3>2nd Place</h3>
+                <h1>R250</h1>
+            </div>
+
+            <div class="prize-card bronze">
+                <span>🥉</span>
+                <h3>3rd Place</h3>
+                <h1>R150</h1>
+            </div>
+
+            <div class="prize-card">
+                <span>4️⃣</span>
+                <h3>4th Place</h3>
+                <h1>R75</h1>
+            </div>
+
+            <div class="prize-card">
+                <span>5️⃣</span>
+                <h3>5th Place</h3>
+                <h1>R25</h1>
+            </div>
+
+        </div>
+
+        <div class="total-prize">
+
+            <h2>Total Weekly Prize Pool</h2>
+
+            <h1>R1,000</h1>
+
+            <p>
+                Prize money is paid after league verification each week.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     WHY JOIN TCL
+========================================== -->
+
+<section class="features">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Why Join TCL?
+        </h2>
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    🚛
+                </div>
+
+                <h3>Competitive League</h3>
+
+                <p>
+                    Compete against skilled TruckersMP drivers from across South Africa.
+                </p>
+
+            </article>
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    💰
+                </div>
+
+                <h3>Weekly Cash</h3>
+
+                <p>
+                    Every week the best drivers earn real cash prizes.
+                </p>
+
+            </article>
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    🏆
+                </div>
+
+                <h3>Live Rankings</h3>
+
+                <p>
+                    Watch your position change live as league results are updated.
+                </p>
+
+            </article>
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    🌍
+                </div>
+
+                <h3>Community</h3>
+
+                <p>
+                    Join convoy events, meet new drivers and grow together.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     UPCOMING EVENT
+========================================== -->
+
+<section class="event-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            📅 Upcoming Convoy
+        </h2>
+
+        <div class="event-grid">
+
+            <div class="event-card">
+
+                <h3>🚛 Event</h3>
+
+                <p>Sunday Convoy Challenge</p>
+
+            </div>
+
+            <div class="event-card">
+
+                <h3>📅 Date</h3>
+
+                <p>Every Sunday</p>
+
+            </div>
+
+            <div class="event-card">
+
+                <h3>🕖 Time</h3>
+
+                <p>19:00 SAST</p>
+
+            </div>
+
+            <div class="event-card">
+
+                <h3>🌍 Server</h3>
+
+                <p>TruckersMP Simulation 1</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ==========================================
+     LATEST NEWS
+========================================== -->
+
+<section class="news">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            📢 Latest League News
+        </h2>
+
+        <div class="news-grid">
+
+            <article class="news-card">
+
+                <h3>Registration Open</h3>
+
+                <p>
+                    Registration is officially open for all South African
+                    TruckersMP drivers.
+                </p>
+
+            </article>
+
+            <article class="news-card">
+
+                <h3>Season 1</h3>
+
+                <p>
+                    Season 1 begins on <strong>10 August 2026</strong>.
+                    Get registered before the deadline.
+                </p>
+
+            </article>
+
+            <article class="news-card">
+
+                <h3>Weekly Prize Pool</h3>
+
+                <p>
+                    The league offers a guaranteed
+                    <strong>R1,000</strong>
+                    weekly prize pool.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     HOW IT WORKS
+========================================== -->
+
+<section class="how-it-works">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🚛 How It Works
+        </h2>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <h3>1️⃣ Register</h3>
+
+                <p>
+                    Complete the online registration form.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>2️⃣ Get Approved</h3>
+
+                <p>
+                    Your application is reviewed by league administrators.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>3️⃣ Compete</h3>
+
+                <p>
+                    Participate in official convoy events and complete deliveries.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>4️⃣ Win Cash</h3>
+
+                <p>
+                    Finish in the Top 5 and receive weekly prize money.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     COMMUNITY
+========================================== -->
+
+<section class="community">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🌍 Join Our Community
+        </h2>
+
+        <div class="community-grid">
+
+            <div class="community-card">
+
+                <div class="community-icon">
+                    📘
+                </div>
+
+                <h3>Facebook</h3>
+
+                <p>
+                    Follow league news, announcements and winners.
+                </p>
+
+            </div>
+
+            <div class="community-card">
+
+                <div class="community-icon">
+                    💬
+                </div>
+
+                <h3>Discord</h3>
+
+                <p>
+                    Chat with drivers and join convoy discussions.
+                </p>
+
+            </div>
+
+            <div class="community-card">
+
+                <div class="community-icon">
+                    🚛
+                </div>
+
+                <h3>TruckersMP</h3>
+
+                <p>
+                    Drive with South Africa's best virtual truckers.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     LATEST WINNERS
+========================================== -->
+
+<section class="latest-winners">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🏆 Latest Weekly Winners
+        </h2>
+
+        <p class="section-subtitle">
+            Congratulations to our latest cash prize winners.
+        </p>
+
+        <div class="stats-grid">
+
+            <div class="card">
+
+                <h2>🥇 Winner</h2>
+
+                <h3 id="winner1">
+                    Loading...
+                </h3>
+
+                <p id="winner1Prize">
+                    R500
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>🥈 Second</h2>
+
+                <h3 id="winner2">
+                    Loading...
+                </h3>
+
+                <p id="winner2Prize">
+                    R250
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>🥉 Third</h2>
+
+                <h3 id="winner3">
+                    Loading...
+                </h3>
+
+                <p id="winner3Prize">
+                    R150
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     CALL TO ACTION
+========================================== -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>
+
+            Ready to become South Africa's best TruckersMP driver?
+
+        </h2>
+
+        <p>
+
+            Join TCL today and compete for weekly cash prizes.
+
+        </p>
+
+        <a href="pages/register.html"
+           class="btn btn-primary">
+
+            Register Today
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     REGISTRATION NOTICE
+========================================== -->
+
+<section class="registration-notice">
+
+<div class="container">
+
+<div class="hero-card">
+
+<h2>📢 Registration Notice</h2>
+
+<p>
+Registration is open for all South African TruckersMP drivers.
+</p>
+
+<p>
+✔ Entry Fee: <strong>R25</strong>
+</p>
+
+<p>
+📅 Season Starts: <strong>10 August 2026</strong>
+</p>
+
+<p>
+🏆 Weekly Prize Pool: <strong>R1,000</strong>
+</p>
+
+<p>
+All applications are reviewed by TCL administrators before approval.
+Only approved drivers will appear on the leaderboard.
+</p>
+
+<a href="pages/register.html"
+class="btn btn-primary">
+
+Register Now
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <h2>
+
+                🚛 TCL TruckersMP Cash League
+
+            </h2>
+
+            <p>
+
+                South Africa's Premier Euro Truck Simulator 2 Cash Competition.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>
+
+                Quick Links
+
+            </h3>
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="pages/register.html">Register</a></li>
+
+                <li><a href="pages/leaderboard.html">Leaderboard</a></li>
+
+                <li><a href="pages/rules.html">Rules</a></li>
+
+                <li><a href="pages/contact.html">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>
+
+                League
+
+            </h3>
+
+            <p>
+
+                Weekly Cash Prize Pool
+
+            </p>
+
+            <p>
+
+                Live Leaderboards
+
+            </p>
+
+            <p>
+
+                Convoy Events
+
+            </p>
+
+            <p>
+
+                Driver Profiles
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 TCL TruckersMP Cash League
+
+        <br><br>
+
+        Built for the TruckersMP Community ❤️
+
+    </div>
+
+</footer>
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script type="module" src="js/app.js"></script>
+
+<script src="js/menu.js"></script>
+
+</body>
+
+</html>
